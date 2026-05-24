@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: kulture_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-Kulture}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-19991}
+      POSTGRES_DB: ${DB_NAME:-kulture_db}
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Initialisation automatique du schéma
+      - ./src/infra/migrations/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-kulture} -d ${DB_NAME:-kulture_db}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: kulture_db_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+
+volumes:
+  postgres_data:
+  redis_data:
