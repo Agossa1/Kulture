@@ -1,4 +1,4 @@
-import { StockRepository } from "../repositories/stock.repositories";
+import { StockRepository } from "../repositories/media.repositories";
 import type { Logger } from 'winston';
 import { Stock, AlertType } from "../types/stock.types";
 
@@ -26,7 +26,7 @@ export class GetStockAllService {
                 offset
             });
         } catch (error) {
-            this.logger.error('Error in GetMediaAllService:', error);
+            this.logger.error('Error in GetStockAllService:', error);
             throw error;
         }
     }

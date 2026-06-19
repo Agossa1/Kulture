@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, jest } from '@jest/globals';
 import { DeleteStockService } from '../../services/delete.stock.service';
 import { StockRepository } from '../../repositories/stock.repositories';
 
-describe('DeleteMediaService', () => {
+describe('DeleteStockService', () => {
     let deleteService: DeleteStockService;
     let stockRepositoryMock: jest.Mocked<StockRepository>;
     let loggerMock: any;

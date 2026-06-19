@@ -14,7 +14,7 @@ export class CreateStockService {
             this.logger.info(`Nouveau lot de stock créé (Lot: ${newStock.batchNumber}, ID: ${newStock.id})`);
             return newStock;
         } catch (error) {
-            this.logger.error('Error in CreateMediaService:', error);
+            this.logger.error('Error in CreateStockService:', error);
             throw error;
         }
     }

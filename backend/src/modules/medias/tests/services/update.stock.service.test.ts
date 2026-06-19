@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, jest } from '@jest/globals';
 import { UpdateStockService } from '../../services/update.stock.service';
 import { StockRepository } from '../../repositories/stock.repositories';
 
-describe('UpdateMediaService', () => {
+describe('UpdateStockService', () => {
     let updateService: UpdateStockService;
     let stockRepositoryMock: jest.Mocked<StockRepository>;
     let loggerMock: any;
